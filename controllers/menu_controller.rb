@@ -1,4 +1,3 @@
-# #1
 require_relative '../models/address_book'
 
 class MenuController
@@ -15,7 +14,8 @@ class MenuController
         puts "2 - Create an entry"
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
-        puts "5 - Exit"
+        puts "5 - View Entry Number n"
+        puts "6 - Exit"
         print "Enter your selection: "
         
         selection = gets.to_i
@@ -39,6 +39,10 @@ class MenuController
     read_csv
     main_menu
     when 5
+    system "clear"
+    view_entry_number
+    main_menu
+    when 6
     puts "Good-bye!"
     exit(0)
     else
@@ -62,7 +66,6 @@ end
 def create_entry
     system "clear"
     puts "New AddressBloc Entry"
-    # #12
     print "Name: "
     name = gets.chomp
     print "Phone number: "
@@ -70,7 +73,6 @@ def create_entry
     print "Email: "
     email = gets.chomp
     
-    # #13
     @address_book.add_entry(name, phone, email)
     
     system "clear"
@@ -78,22 +80,17 @@ def create_entry
 end
 
 def entry_submenu(entry)
-    # #16
     puts "n - next entry"
     puts "d - delete entry"
     puts "e - edit this entry"
     puts "m - return to main menu"
     
-    # #17
     selection = gets.chomp
     
     case selection
-        # #18
         when "n"
-        # #19
         when "d"
         when "e"
-        # #20
         when "m"
         system "clear"
         main_menu
@@ -102,12 +99,26 @@ def entry_submenu(entry)
         puts "#{selection} is not a valid input"
         entries_submenu(entry)
     end
+   end
+    
+def view_entry_number
+    system "clear"
+    print "Which entry would you like to see?"
+    entry = @address_book.entries
+    selection = gets.to_i
+    if selection > 0 && selection <= entry.length
+        puts entry[selection -1].to_s
+    elsif selection == 0
+        puts "Sorry, I cannot search for something that doesn't exist"
+    else
+        puts "I do not have that many entries.. Try again!"
+    end
+  end
 
 def search_entries
 end
 
 def read_csv
-end
 end
 end
 
