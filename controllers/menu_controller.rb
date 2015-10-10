@@ -1,5 +1,5 @@
 # #1
-require_relative '../address-bloc/models/address_book'
+require_relative '../models/address_book'
 
 class MenuController
     attr_accessor :address_book

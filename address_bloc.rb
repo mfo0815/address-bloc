@@ -1,6 +1,6 @@
 puts "Welcome to AddressBloc!"
 
-require_relative '../address-bloc/controllers/menu_controller'
+require_relative 'controllers/menu_controller'
 
 # #4
 menu = MenuController.new
